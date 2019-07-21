@@ -1,0 +1,13 @@
+USER/JLinkLog.txt
+USER/build
+USER/DebugConfig/
+USER/EventRecorderStub.scvd
+OBJ/
+USER/project.*
+USER/template.*
+USER/Template.uvguix_lyxta
+USER/Template.uvoptx
+*.bak
+*.dep
+*.bin
+*.html
