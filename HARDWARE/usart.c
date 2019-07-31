@@ -439,7 +439,7 @@ void Gyro_USART_DMA_EN(void)
 	
 	gyro_start = 0;
 	j = 0;
-	/*while (!gyro_start)
+	while (!gyro_start)
 	
 	{
 		if (j == 0)
@@ -496,8 +496,8 @@ void Gyro_USART_DMA_EN(void)
 					break;
 			}
 		}
-	}*/
-		while (!gyro_start)
+	}
+/*		while (!gyro_start)
 	{
 		if (j == 0 || j == 1)
 		{
@@ -548,7 +548,7 @@ void Gyro_USART_DMA_EN(void)
 					break;
 			}
 		}
-	}
+	}*/
 #endif
 }
 
@@ -715,12 +715,9 @@ void USART6_DMA_RX_IRQHandler(void)
 {
 	if (DMA_GetITStatus(USART6_DMA_RX_STREAM, USART6_DMA_RX_IT_TC) == SET)
 	{
-		//Gyro_Total = ((Gyro_RxBuffer[18] << 8) | Gyro_RxBuffer[17]);
-		Gyro_Total = ((Gyro_RxBuffer[7] << 8) | Gyro_RxBuffer[6]);
-		Gyro_Angle_Total = Gyro_Total / 32768.0f*180.0f;
-//		Gyro_Radian_Total = Gyro_Angle_Total * pi / 180.0f ;
+		Gyro_Total = ((Gyro_RxBuffer[18] << 8) | Gyro_RxBuffer[17]);
+		Gyro_Angle_Total = Gyro_Total * 180.0 / 32768;
 		Gyro_Radian_Total = Gyro_Total * pi / 32768;
-		
 		Encoder_Update();
 		
 		GPS_Update();

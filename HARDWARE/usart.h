@@ -9,7 +9,7 @@
 
 #define Command_RxBufferSize 9
 #define GPS_TxBufferSize 20
-#define Gyro_RxBufferSize 11
+#define Gyro_RxBufferSize 22
 
 #define Print_USART USART1
 

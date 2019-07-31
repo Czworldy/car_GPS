@@ -15,16 +15,16 @@ void Gyro_Set_Zero(void)
 	DMA_Cmd(USART6_DMA_RX_STREAM, DISABLE);
 	while (DMA_GetCmdStatus(USART6_DMA_RX_STREAM) != DISABLE) {} 
 	
-/*	USART_SendByte(USART6, 0xFF);
+	USART_SendByte(USART6, 0xFF);
 	USART_SendByte(USART6, 0xAA);
-	USART_SendByte(USART6, 0x76);
-	USART_SendByte(USART6, 0x00);
-	USART_SendByte(USART6, 0x00);*/
+	USART_SendByte(USART6, 0x69);
+	USART_SendByte(USART6, 0x88);
+	USART_SendByte(USART6, 0xb5);
 		
 	USART_SendByte(USART6, 0xFF);
 	USART_SendByte(USART6, 0xAA);
-	USART_SendByte(USART6, 0x01);
-	USART_SendByte(USART6, 0x04);
+	USART_SendByte(USART6, 0x76);
+	USART_SendByte(USART6, 0x00);
 	USART_SendByte(USART6, 0x00);
 		
 #endif
