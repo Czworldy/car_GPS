@@ -21,7 +21,7 @@
 //电容触摸屏增加FT5206的支持
 //////////////////////////////////////////////////////////////////////////////////
 
-#define USING_TOUCH_SCREEN
+//#define USING_TOUCH_SCREEN
 
 #define TP_PRES_DOWN 0x80  //触屏被按下	  
 #define TP_CATH_PRES 0x40  //有按键按下了 

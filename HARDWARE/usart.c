@@ -8,6 +8,9 @@
 __align(32) volatile u8 Command_RxBuffer[Command_RxBufferSize];
 __align(32) volatile u8 GPS_TxBuffer[GPS_TxBufferSize];
 __align(32) volatile u8 Gyro_RxBuffer[Gyro_RxBufferSize];
+__align(32) volatile u8 Key_RxBuffer[1] = {0};
+
+u8 USART_Key_Receive = 0;
 
 void USART_Config(void)
 {

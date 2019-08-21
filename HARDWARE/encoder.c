@@ -529,7 +529,7 @@ void Encoder_Init_Radius(void)
 
 void Encoder_View_Coefficient(void)
 {
-	u8 tp_last, key_value;
+	u8 tp_last, key_value, is_key = 0;
 	
 	LCD_Clear(WHITE);
 	KeyBoard_State = 0;
@@ -551,6 +551,7 @@ void Encoder_View_Coefficient(void)
 		{
 			USART_Key_Receive = 0;
 			key_value = Key_RxBuffer[0];
+			is_key = 1;
 		#else
 		tp_last = tp_dev.sta&TP_PRES_DOWN;
 		tp_dev.scan(0); 		 
@@ -558,10 +559,13 @@ void Encoder_View_Coefficient(void)
 		{			//触摸屏被按下	
 		 	if (tp_dev.x[0]<lcddev.width&&tp_dev.y[0]<lcddev.height)
 			{
+				is_key = 1;
 				key_value = TP_Row_Judge(tp_dev.x[0], tp_dev.y[0]);
 		#endif
 				switch(key_value)
 				{
+					case key1:
+						return;
 					case keyback:
 						return;
 					case keyboardtab:
@@ -569,6 +573,8 @@ void Encoder_View_Coefficient(void)
 						Show_Keyboard();
 						break;
 				}
+				if(is_key)
+					return;
 				POINT_COLOR=BLACK;
 				LCD_printf(0,6+36*0,320,24,24,"1.E0.C1:%.10lf",Encoders[0].Convert1);
 				LCD_printf(0,6+36*1,320,24,24,"2.E0.C2:%.10lf",Encoders[0].Convert2);
@@ -590,7 +596,7 @@ void Encoder_View_Coefficient(void)
 
 void Encoder_View_Calibration(void)
 {
-	u8 i, tp_last, key_value;
+	u8 i, tp_last, key_value, is_key = 0;
 	
 	LCD_Clear(WHITE);
 	KeyBoard_State = 0;
@@ -608,6 +614,7 @@ void Encoder_View_Calibration(void)
 		{
 			USART_Key_Receive = 0;
 			key_value = Key_RxBuffer[0];
+			is_key = 1;
 		#else
 		tp_last = tp_dev.sta&TP_PRES_DOWN;
 		tp_dev.scan(0); 		 
@@ -615,6 +622,7 @@ void Encoder_View_Calibration(void)
 		{			//触摸屏被按下	
 		 	if (tp_dev.x[0]<lcddev.width&&tp_dev.y[0]<lcddev.height)
 			{
+				is_key = 1;
 				key_value = TP_Row_Judge(tp_dev.x[0], tp_dev.y[0]);
 		#endif
 				switch(key_value)
@@ -626,6 +634,8 @@ void Encoder_View_Calibration(void)
 						Show_Keyboard();
 						break;
 				}
+				if(is_key)
+					return;
 				POINT_COLOR=BLACK;
 				for (i = 0; i < 4; ++i)
 					LCD_printf(0,6+36*i,300,24,24,"%u.EN[%u] = %lld",i+1,i,Encoder_N[i]);

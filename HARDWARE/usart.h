@@ -13,7 +13,7 @@
 
 #define Print_USART USART1
 
-//#define BSP_USING_USART1
+#define BSP_USING_USART1
 //#define BSP_USING_USART2
 #define BSP_USING_USART3
 //#define BSP_USING_UART4
@@ -170,6 +170,9 @@
 extern volatile u8 Command_RxBuffer[];
 extern volatile u8 GPS_TxBuffer[];
 extern volatile u8 Gyro_RxBuffer[];
+extern volatile u8 Key_RxBuffer[];
+
+extern u8 USART_Key_Receive;
 
 void USART_Config(void);
 void Gyro_USART_DMA_EN(void);
